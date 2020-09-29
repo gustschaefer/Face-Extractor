@@ -9,7 +9,7 @@ Quando o processo for finalizado, a rede é utilizada novamente (2° filtragem) 
 - [Primeira filtragem (raw)](#primeira-filtragem-(raw))
 - [Segunda filtragem](#segunda-filtragem)
 - [Como executar o programa](#como-executar-o-programa)
-    - [Inicialização do Zookeeper](#inicialização-do-zookeeper)
+    
 - [Referencias](#referencias)
 
 ## Primeira filtragem (raw)
@@ -125,6 +125,6 @@ Aguarde o processo ser finalizado e veja que as imagens e o arquivo .txt foram s
 
 ## Referencias
 
-Para fazer a **detecção de faces**, utilizei como referencia o post do blog [PyImageSearch](https://www.pyimagesearch.com/), que explica como utilizar a rede neural Caffe em um [post](https://www.pyimagesearch.com/2018/02/26/face-detection-with-opencv-and-deep-learning/) detalhado com maior aprofundamento apenas na **detecção** dos rostos. Além disso, utilizei partes do código mostrado para me auxiliar nos processos aqui descritos. Para acessar, acesse: 
+Para fazer a **detecção de faces**, utilizei como referencia o post do blog [PyImageSearch](https://www.pyimagesearch.com/), que explica como utilizar a rede neural Caffe em um post detalhado com maior aprofundamento apenas na **detecção** dos rostos. Além disso, utilizei partes do código mostrado para me auxiliar nos processos aqui descritos. Para acessar, acesse: 
 
 * https://www.pyimagesearch.com/2018/02/26/face-detection-with-opencv-and-deep-learning/
