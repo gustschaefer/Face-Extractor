@@ -27,7 +27,7 @@ A pasta **first-filter** por padrão contem todas as informaçoes uteis da primi
 A pasta **bboxes** contem todas as imagens em que ao menos um rosto foi encontrado, com o bounding box desenhado em cada "rosto" da imagem, junto com o confidence. Nessa pasta, fica claro como falsos positivos são frequentes na primeira filtragem. Abaixo é mostrado como são salvos os arquivos da pasta e um exemplo dos bounding boxes desenhados.
 
 <p align="center">
-  <img src="./screenshots/bboxes.jpg" title="Imagem com seus bounding boxes desenhados"/> 
+  <img src="./screenshots/bbox-folder.jpg" title="Imagem com seus bounding boxes desenhados"/> 
 </p> 
 
 Bounding boxes desenhados:
