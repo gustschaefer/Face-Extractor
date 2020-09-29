@@ -24,18 +24,28 @@ A pasta **first-filter** por padrão contem todas as informaçoes uteis da primi
   <img src="./screenshots/first-filter-folder.jpg" alt="Estrutura da pasta first-filter">
 </p>
 
-A pasta **bboxes** contem todas as imagens em que ao menos um rosto foi encontrado, com o bounding box desenhado em cada "rosto" da imagem, junto com o confidence. Nessa pasta, fica claro como falsos positivos são frequentes na primeira filtragem. Abaixo é mostrado como são salvos os arquivos da pasta e um exemplo de uma imagem com um falso positivo.
+A pasta **bboxes** contem todas as imagens em que ao menos um rosto foi encontrado, com o bounding box desenhado em cada "rosto" da imagem, junto com o confidence. Nessa pasta, fica claro como falsos positivos são frequentes na primeira filtragem. Abaixo é mostrado como são salvos os arquivos da pasta e um exemplo dos bounding boxes desenhados.
 
 <p align="center">
-  <img src="./screenshots/bbox-folder.jpg" alt="Pasta bboxes"/>
-  <img src="./screenshots/bboxes.jpg" alt="Imagem com seus bounding boxes desenhados"/> 
+  <img src="./screenshots/bboxes.jpg" title="Imagem com seus bounding boxes desenhados"/> 
+</p> 
+
+Bounding boxes desenhados:
+
+<p align="center">
+  <img src="./screenshots/bboxes.jpg" title="Imagem com seus bounding boxes desenhados"/> 
 </p> 
 
 A pasta **multi-crop-raw** contém efetivamente todos os recortes dos mesmos bounding boxes mostrados na pasta **bboxes**
 
 <p align="center">
-  <img src="./screenshots/multi-raw-folder.jpg" alt="Pasta multi-crop-raw"/>
-  <img src="./screenshots/raw.jpg" alt="Recorte"/> 
+  <img src="./screenshots/multi-raw-folder.jpg" title="Pasta multi-crop-raw"/>
+</p> 
+
+Exemplo de rosto recortado:
+
+<p align="center">
+  <img src="./screenshots/raw.jpg" title="Recorte"/> 
 </p> 
 
 A pasta **not** contém imagens que nenhum rosto foi detectado, é util ter essa pasta pois podemos verificar se existem falsos negativos e realoca-los.
