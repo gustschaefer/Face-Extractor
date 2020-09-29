@@ -1,0 +1,33 @@
+FILTERED FACES INFOS
+
+(NAME, SHAPE, CONFIDENCE)
+
+TOTAL FILES: 24
+MIN RESOLUTION: filter14.jpg, (84, 54)
+MAX RESOLUTION: filter22.jpg, (122, 84)
+MEDIAN RESOLUTION: (102, 72)
+
+filter0.jpg, (120, 83, 3), 99.99%
+filter1.jpg, (113, 82, 3), 99.98%
+filter2.jpg, (114, 79, 3), 99.98%
+filter3.jpg, (94, 69, 3), 99.99%
+filter4.jpg, (111, 76, 3), 99.98%
+filter5.jpg, (100, 76, 3), 99.93%
+filter6.jpg, (113, 70, 3), 99.89%
+filter7.jpg, (89, 71, 3), 99.98%
+filter8.jpg, (91, 76, 3), 99.99%
+filter9.jpg, (86, 60, 3), 99.98%
+filter10.jpg, (92, 76, 3), 99.99%
+filter11.jpg, (92, 73, 3), 99.94%
+filter12.jpg, (114, 79, 3), 99.99%
+filter13.jpg, (89, 61, 3), 99.99%
+filter14.jpg, (84, 54, 3), 99.99%
+filter15.jpg, (93, 69, 3), 99.97%
+filter16.jpg, (91, 58, 3), 99.97%
+filter17.jpg, (113, 75, 3), 99.97%
+filter18.jpg, (112, 72, 3), 99.99%
+filter19.jpg, (115, 72, 3), 99.99%
+filter20.jpg, (101, 73, 3), 99.99%
+filter21.jpg, (103, 80, 3), 99.99%
+filter22.jpg, (122, 84, 3), 99.98%
+filter23.jpg, (115, 69, 3), 99.69%
