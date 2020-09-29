@@ -10,7 +10,8 @@ import get_image_infos as gii
 
 bbox_folder = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/first-filter/bboxes"
 multi_crop_folder = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/first-filter/multi-crop-raw"
-NA_bbox_folder = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/first-filter/not"
+not_face_folder = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/first-filter/not"
+txt_path = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/first-filter/raw-crop.txt"
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -20,10 +21,16 @@ ap.add_argument("-p", "--prototxt", required=True,
 	help="path to Caffe prototxt file")
 ap.add_argument("-m", "--model", required=True,
 	help="path to Caffe pre-trained model")
+
 ap.add_argument("-b", "--bbox_folder", default=bbox_folder,
 	help="path to output bboxes folder")
 ap.add_argument("-r", "--multi_crop_folder", default=multi_crop_folder,
 	help="path to output crops folder")
+ap.add_argument("-nt", "--not_face_folder", default=not_face_folder,
+	help="path to output not faces folder")
+ap.add_argument("-txt", "--txt_path", default=txt_path,
+	help="path to output txt file")
+
 ap.add_argument("-c", "--confidence", type=float, default=0.15,
 	help="minimum probability to filter weak detections")
 args = vars(ap.parse_args())
@@ -107,9 +114,9 @@ for (num, imagePath) in enumerate(imagePaths):
 		cv2.imwrite(os.path.join(args["bbox_folder"], name), image)
 
 	else: #no faces
-		cv2.imwrite(os.path.join(NA_bbox_folder, str(num) + ".jpg"), image)
+		cv2.imwrite(os.path.join(args["not_face_folder"], str(num) + ".jpg"), image)
 
-gii.create_txt("C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/first-filter/raw-crop.txt",
+gii.create_txt(args["txt_path"],
 				file_infos, "first filter (raw) infos", shapes)
 
 

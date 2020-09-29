@@ -79,10 +79,10 @@ for (num, imagePath) in enumerate(imagePaths):
 
 		shapes_NA.append(image.shape[:2])
 
-gii.create_txt("C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/test/filter-crop.txt",
+gii.create_txt("C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/filtered-crop/filter-crop.txt",
 				filtered_faces_infos, "filtered faces infos", shapes_filter)
 
-gii.create_txt("C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/test/NA-filter-crop.txt",
-				NA_infos, "na filtered faces infos", shapes_NA)
+gii.create_txt("C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/filtered-crop/not-filter-crop.txt",
+				NA_infos, "not filtered faces infos", shapes_NA)
 
 
