@@ -1,8 +1,8 @@
 # Face Extractor
 
-O programa tem como objetivo receber um dataset com imagens de pessoas e extrair apenas as potenciais faces contidas em cada imagem. Para realizar a detecção, uma rede Caffe ***res10_300x300_ssd_iter_140000.caffemodel*** pré treinada é utilizada, junto com seu modelo ***deploy.prototxt*** (Para maiores informaçoes sobre a rede pré treinada, veja a sessão [Referencias](#Referencias). Após fazer a detecção dos rostos em cada imagem (1° filtragem), o programa os recorta e envia para uma pasta determinada pelo usuário.
+O programa tem como objetivo receber um dataset com imagens de pessoas e extrair apenas as potenciais faces contidas em cada imagem. Para realizar a detecção, uma rede Caffe ***res10_300x300_ssd_iter_140000.caffemodel*** pré treinada é utilizada, junto com seu modelo ***deploy.prototxt*** (Para maiores informaçoes sobre a rede pré treinada, veja a sessão [Referencias](#Referencias)). Após fazer a detecção dos rostos em cada imagem (1° filtragem), o programa os recorta e envia para uma pasta determinada pelo usuário.
 
-Quando o processo for finalizado, a rede é utilizada novamente (2° filtragem) para verificar se os recortes realmente são faces, e eliminar os falsos positivos. Além disso, ao final de cada etapa, um arquivo .txt é gerado contendo informaçoes sobre as imagens como seu nome, tamanho e probabilidade de ser um rosto.
+Quando o processo for finalizado, a rede é utilizada novamente (2° filtragem) para verificar se os recortes realmente são faces, e eliminar os falsos positivos. Além disso, ao final de cada etapa, um arquivo .txt é gerado contendo informaçoes sobre as imagens, como seu nome, tamanho e probabilidade de ser um rosto.
 
 ## Sumário
 
@@ -88,7 +88,7 @@ Os arquivos .txt possuem informaçoes sobre os recortes dos rostos e dos sem ros
 
 ## Como executar o programa
 
-Como dito acima, o programa possui duas etapas: 1° e 2° filtragem.
+Como dito acima, o programa possui duas etapas: primeira e segunda filtragem. Na primeira filtragem, é feita a detecção e o recorte das faces, já na segunda, a classificação final das imagens (rosto ou não).
 
 ### Detecção das faces e recorte
 
@@ -98,7 +98,7 @@ Primeiro você deve abrir um terminal (Windows, Linux ou Mac) e rodar o script *
 * **-p ou --prototxt:** arquivo ***deploy.prototxt***
 * **-m ou --model:** modelo Caffe ***res10_300x300_ssd_iter_140000.caffemodel***
 
-E os argumentos **opcionais** (pastas onde as imagens serão salvas e confidece), que ja possuem um valor pré determinado mas que pode ser alterado pelo usuário:
+E os argumentos **opcionais** (pastas onde as imagens serão salvas e confidece), ja possuem um valor pré determinado mas que pode ser alterado pelo usuário:
 
 * **-b ou --bbox_folder:** caminho para a pasta onde as ***imagens com bouding box*** desenhdos serão salvas.
 
@@ -106,7 +106,7 @@ E os argumentos **opcionais** (pastas onde as imagens serão salvas e confidece)
 
 * **-r ou --multi_crop_folder:** caminho para pasta onde ***todos os recortes*** do 1º filtro serão salvos.  
 
-   	- Padrão: ```./first-filter/multi-crop-raw```
+	- Padrão: ```./first-filter/multi-crop-raw```
 
 * **-nt ou --not_face_folder:** caminho para pasta onde as ***imagens sem rosto detectado*** no 1º filtro serão salvas. 
 
@@ -137,7 +137,7 @@ Abra um segundo terminal (ou se preferir, utilize o primeiro) e execute o script
 
 * **-d ou --dataset:** caminho para a ***pasta original*** contendo todas as imagens
 
-OBS.: É de extrema importancia que o caminho especificado para este dataset seja o mesmo caminho onde as imagens recortadas no primeiro filtro foram salvas, no caso se você utilizou a pasta padrao, o argumento deve ser:
+	* OBS.: É de extrema importancia que o caminho especificado para este dataset seja o mesmo caminho onde as imagens recortadas no primeiro filtro foram salvas, no caso se você utilizou a pasta padrao, o argumento deve ser:
 
 	* ```./first-filter/multi-crop-raw```
 
@@ -146,19 +146,19 @@ OBS.: É de extrema importancia que o caminho especificado para este dataset sej
 
 E os argumentos **opcionais** (pastas onde as imagens serão salvas e confidece), que ja possuem um valor pré determinado mas que pode ser alterado pelo usuário:
 
-* **-ff ou --filtered_crop_face:** caminho para a pasta onde as ***imagens com bouding box*** desenhdos serão salvas. 
+* **-ff ou --filtered_crop_face:** caminho para a pasta onde os **contendo face** serão salvos
 
 	- Padrão: ```./filtered-crop/face```
 
-* **-nff ou --filtered_crop_not:** caminho para pasta onde ***todos os recortes*** do 1º filtro serão salvos.   
+* **-nff ou --filtered_crop_not:** caminho para a pasta onde os recortes **sem face** serão salvos   
 
 	- Padrão: ```./filtered-crop/not```
 
-* **-ftxt ou --filtered_txt:** caminho para pasta onde as ***imagens sem rosto detectado*** no 1º filtro serão salvas. 
+* **-ftxt ou --filtered_txt:** caminho para pasta onde o **arquivo .txt** das imagens recortadas **com face** será salvo
 
 	- Padrão: ```./filtered-crop/filter-crop.txt```
 
-* **-ntxt ou --not_filtered_txt:** caminho para a pasta onde o ***arquivo .txt*** será salvo. 
+* **-ntxt ou --not_filtered_txt:** caminho para pasta onde o **arquivo .txt** das imagens recortadas **sem face** será salvo
 
 	- Padrão: ```./filtered-crop/not-filter-crop.txt```
 
@@ -176,11 +176,11 @@ Aguarde o processo ser finalizado e veja que as imagens e o arquivo .txt foram s
 
 ### Resultados
 
-Na pasta escolhida para salvar as imagens com rosto detectado (por padrao: **/filtered-crop/face**) você vai encontrar o resultado final do projeto, com imagens recortadas de faces, indepentende de possuirem mascara ou não. Após esse processo, você pode fazer um resize nas imagens baseando-se na média informada no arquivo txt.
+Na pasta escolhida para salvar as imagens com rosto detectado (por padrao: **/filtered-crop/face**) você vai encontrar o resultado final do projeto, com imagens recortadas de faces, indepentende de possuirem mascara ou não. Após este processo, você pode fazer um resize nas imagens baseando-se na média informada no arquivo txt.
 
-É importante dizer que os valores de confidence/threshold são empíricos e dependendo do dataset, devem ser modificados. Porém, é essencial que na primeira filtragem, o confidence deve ser menor para garantir que as faces serão encontradas, já na segunda filtragem, com as imagens 'isoladas', deve ser maior. No pior dos casos, ao utilizar esse padrão, ao final do processo na pasta ***./filtered-crop/face*** vão exitir apenas recortes de rostos (devido ao alto valor de confidence), e na pasta ***/filtered-crop/not*** vão existir alguns falsos negativos. Se a quantidade de falsos negativos for relevante para o dataset, cabe ao usuário realocar essas imagens.
+É importante dizer que os valores de confidence/threshold são empíricos e dependendo do dataset, devem ser modificados. Porém, é essencial que na primeira filtragem, o confidence seja menor para garantir que todas as faces serão encontradas, já na segunda filtragem, com as imagens 'isoladas', deve ser maior. No pior dos casos, ao utilizar este padrão, ao final do processo na pasta ***./filtered-crop/face*** vão exitir apenas recortes de rostos (devido ao alto valor do confidence), e na pasta ***/filtered-crop/not*** vão existir alguns falsos negativos. Se a quantidade de falsos negativos for relevante para o dataset, cabe ao usuário realocar essas imagens.
 
-Dai que se torna útil o uso dos arquivos txt, pois da pra conferir o confidence de cada imagem, fazendo uma analise mais direcionada para as imagens com **maior confidence** que foram classificadas como **não** sendo um rosto (possibilidade de falso negativo), e nas imagens com **menor confidence** que foram ditas como **sendo** um rosto (possibilidade de falso positivo).
+Dai que se torna útil o uso dos arquivos txt, pois da para conferir o confidence de cada imagem, fazendo uma analise mais direcionada para aquelas com **maior probabilidade** que foram classificadas como **não** sendo um rosto (possibilidade de falso negativo), e nas imagens com **menor probabilidade** que foram ditas como **sendo** um rosto (possibilidade de falso positivo).
 
 ## Referencias
 
