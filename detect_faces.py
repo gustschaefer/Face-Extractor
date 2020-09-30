@@ -42,12 +42,17 @@ net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 print("[INFO] quantifying faces...")
 imagePaths = list(paths.list_images(args["dataset"]))
 
-num_crop = 0 # number of crop images 
-file_infos = [] # list containing all image infos, each one in formeted line (gii.get_infos)
+# number of crop images 
+num_crop = 0 
 
-shapes = [] # list containing all shapes used to calculate the median, max and min resolution
+# list containing all image infos, each one in formeted line (gii.get_infos)
+file_infos = [] 
+
+# list containing all shapes used to calculate the median, max and min resolution
+shapes = [] 
 
 for (num, imagePath) in enumerate(imagePaths):
+    
 	print("[INFO] processing image {}/{}".format(num + 1, len(imagePaths)))
 
 	total_faces = 0 # Total number of possible faces in one image
@@ -59,7 +64,7 @@ for (num, imagePath) in enumerate(imagePaths):
 
 	(h, w) = image.shape[:2]
 	blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 1.0,
-		(300, 300), (104.0, 177.0, 123.0))
+		                        (300, 300), (104.0, 177.0, 123.0))
 
 	# pass the blob through the network and obtain the detections and
 	# predictions
@@ -84,40 +89,54 @@ for (num, imagePath) in enumerate(imagePaths):
 			# draw the bounding box of the face along with the associated
 			# probability
 			text = "{:.2f}%".format(confidence * 100)
+            
 			y = startY - 10 if startY - 10 > 10 else startY + 10
-			cv2.rectangle(image, (startX, startY), (endX, endY),
-				(0, 0, 255), 2)
+			cv2.rectangle(image, (startX, startY), (endX, endY), (0, 0, 255), 2)
 
-			cv2.putText(image, text, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
+			cv2.putText(image, text, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.45, 
+                       (0, 0, 255), 2)
 
 			# set the name of each image in the first filter stage
 			name_crop = "raw"+str(num_crop) +".jpg"
-			org = original_image.copy() # get a copy of the image in order to keep the original preserverd
+            # get a copy of the image in order to keep the original preserverd
+			org = original_image.copy() 
 			
-			startX, startY, endX, endY = startX-2, startY-10, endX+2, endY+10 # increase the bbox size
-			crop_img = org[startY:endY, startX:endX]
+            # increase the bbox size
+			startX, startY, endX, endY = startX-2, startY-10, endX+2, endY+10
+            # crop image based on bbox coords
+			crop_img = org[startY:endY, startX:endX] 
 
-			if crop_img.shape[0] != 0 and crop_img.shape[1] != 0: # check if the croped image it's not empty
-				cv2.imwrite(os.path.join(args["multi_crop_folder"], name_crop), crop_img) # save crop in folder
+            # check if the croped image it's not empty
+			if crop_img.shape[0] != 0 and crop_img.shape[1] != 0: 
+                # save crop in folder
+				cv2.imwrite(os.path.join(args["multi_crop_folder"], name_crop), 
+                            crop_img) 
+                
 				num_crop = num_crop + 1
 				total_faces = total_faces + 1
-
+                
+                # save image shape
 				shapes.append(crop_img.shape[:2])
-				file_infos.append(gii.get_infos(os.path.join(args["multi_crop_folder"], name_crop), 
-									crop_img, str(text)))
+                # save the line correspondingly to the image
+                info_line = gii.get_infos(os.path.join(args["multi_crop_folder"],
+                                          name_crop), crop_img, str(text))
+                # save the formated line into the list
+				file_infos.append(info_line)
 
-		else: # anything above the standard confidece was detected
+		else: # nothing above the standard confidence was detected
 			break
 
-	if total_faces > 0: # image had detected faces
+	if total_faces > 0: # the image has faces
 		name = "img" + str(num) + " - boxes" + str(total_faces) + ".jpg" 
 		cv2.imwrite(os.path.join(args["bbox_folder"], name), image)
 
-	else: #no faces
+	else: # no faces detected
 		cv2.imwrite(os.path.join(args["not_face_folder"], str(num) + ".jpg"), image)
 
-gii.create_txt(args["txt_path"],
-				file_infos, "first filter (raw) infos", shapes)
+# create the .txt file using the file_infos list 
+# (which contains the Infos about all the images with detected faces)
+gii.create_txt(args["txt_path"], file_infos, title="first filter (raw) infos", 
+               shapes=shapes)
 
 
 
