@@ -100,17 +100,24 @@ Primeiro você deve abrir um terminal (Windows, Linux ou Mac) e rodar o script *
 
 E os argumentos **opcionais** (pastas onde as imagens serão salvas e confidece), que ja possuem um valor pré determinado mas que pode ser alterado pelo usuário:
 
-* **-b ou --bbox_folder:** caminho para a pasta onde as ***imagens com bouding box*** desenhdos serão salvas. 		- Padrão: ```./first-filter/bboxes```
+* **-b ou --bbox_folder:** caminho para a pasta onde as ***imagens com bouding box*** desenhdos serão salvas.
 
-* **-r ou --multi_crop_folder:** caminho para pasta onde ***todos os recortes*** do 1º filtro serão salvos.     	- Padrão: ```./first-filter/multi-crop-raw```
+ 	- Padrão: ```./first-filter/bboxes```
+
+* **-r ou --multi_crop_folder:** caminho para pasta onde ***todos os recortes*** do 1º filtro serão salvos.  
+
+   	- Padrão: ```./first-filter/multi-crop-raw```
 
 * **-nt ou --not_face_folder:** caminho para pasta onde as ***imagens sem rosto detectado*** no 1º filtro serão salvas. 
+
 	- Padrão: ```./first-filter/not```
 
-* **-txt ou --txt_path:** caminho para a pasta onde o ***arquivo .txt*** será salvo. 
+* **-txt ou --txt_path:** caminho para a pasta onde o ***arquivo .txt*** será salvo.
+
 	- Padrão: ```./first-filter/raw-crop.txt```
 
 * **-c ou --confidence:** valor minimo do ***confidence*** (limiar). 
+
 	- Padrão para 1º filtro: 0.15 (15%)
 
 Os caminhos pré definidos de pastas estão configurados no inicio do código python e **podem ser alterados manualmente**, dessa forma os argumentos opcionais não precisam ser informados no terminal.
@@ -129,25 +136,30 @@ Aguarde o processo ser finalizado e veja que as imagens e o arquivo .txt foram s
 Abra um segundo terminal (ou se preferir, utilize o primeiro) e execute o script **crop_filter.py** junto com os argumentos necessários:
 
 * **-d ou --dataset:** caminho para a ***pasta original*** contendo todas as imagens
+
 OBS.: É de extrema importancia que o caminho especificado para este dataset seja o mesmo caminho onde as imagens recortadas no primeiro filtro foram salvas, no caso se você utilizou a pasta padrao, o argumento deve ser:
 
-```./first-filter/multi-crop-raw```
+	* ```./first-filter/multi-crop-raw```
 
 * **-p ou --prototxt:** arquivo ***deploy.prototxt***
 * **-m ou --model:** modelo Caffe ***res10_300x300_ssd_iter_140000.caffemodel***
 
 E os argumentos **opcionais** (pastas onde as imagens serão salvas e confidece), que ja possuem um valor pré determinado mas que pode ser alterado pelo usuário:
 
-* **-ff ou --filtered_crop_face:** caminho para a pasta onde as ***imagens com bouding box*** desenhdos serão salvas. 		
+* **-ff ou --filtered_crop_face:** caminho para a pasta onde as ***imagens com bouding box*** desenhdos serão salvas. 
+
 	- Padrão: ```./filtered-crop/face```
 
-* **-nff ou --filtered_crop_not:** caminho para pasta onde ***todos os recortes*** do 1º filtro serão salvos.     	
+* **-nff ou --filtered_crop_not:** caminho para pasta onde ***todos os recortes*** do 1º filtro serão salvos.   
+
 	- Padrão: ```./filtered-crop/not```
 
 * **-ftxt ou --filtered_txt:** caminho para pasta onde as ***imagens sem rosto detectado*** no 1º filtro serão salvas. 
+
 	- Padrão: ```./filtered-crop/filter-crop.txt```
 
 * **-ntxt ou --not_filtered_txt:** caminho para a pasta onde o ***arquivo .txt*** será salvo. 
+
 	- Padrão: ```./filtered-crop/not-filter-crop.txt```
 
 * **-c ou --confidence:** valor minimo do ***confidence*** (limiar). 
