@@ -5,10 +5,10 @@ import os
 from imutils import paths
 import get_image_infos as gii
 
-filtered_crop_face = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/filtered-crop/face"
-filtered_crop_not = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/filtered-crop/not"
-filtered_txt = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/filtered-crop/filter-crop.txt"
-not_filtered_txt = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/filtered-crop/not-filter-crop.txt"
+filtered_crop_face = "C:/*****/face-detection-crop/filtered-crop/face"
+filtered_crop_not = "C:/*****/face-detection-crop/filtered-crop/not"
+filtered_txt = "C:/*****/face-detection-crop/filtered-crop/filter-crop.txt"
+not_filtered_txt = "C:/*****/face-detection-crop/filtered-crop/not-filter-crop.txt"
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--dataset", required=True,

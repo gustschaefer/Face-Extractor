@@ -8,6 +8,7 @@ Quando o processo for finalizado, a rede é utilizada novamente (2° filtragem) 
 
 - [Primeira filtragem (raw)](#primeira-filtragem-(raw))
 - [Segunda filtragem](#segunda-filtragem)
+- [Instalação](#instalação)
 - [Como executar o programa](#como-executar-o-programa)
 	- [1° filtragem: Detecção das faces e recorte](#detecção-das-faces-e-recorte)
 	- [2° filtragem: Classificação das imagens recortadas](#classificação-das-imagens-recortadas)
@@ -85,6 +86,14 @@ A pasta padrão que contem as imagens da segunda filtragem é ```./filtered-crop
 A pasta ```./filtered-crop/face``` contém todos os recortes que foram classificados como rosto na segunda filtragem, já a pasta ```./filtered-crop/not``` os recortes em que um rosto não foi encontrado.
 
 Os arquivos .txt possuem informaçoes sobre os recortes dos rostos e dos sem rosto.
+
+## Instalação 
+
+As bibliotecas necessárias estão no arquivo requirements.txt. No terminal, utilize o comando
+
+```pip install -r /path/to/requirements.txt```
+
+Após a instalação você ja pode compilar os programas python.
 
 ## Como executar o programa
 

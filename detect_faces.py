@@ -8,10 +8,10 @@ import os
 from imutils import paths
 import get_image_infos as gii
 
-bbox_folder = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/first-filter/bboxes"
-multi_crop_folder = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/first-filter/multi-crop-raw"
-not_face_folder = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/first-filter/not"
-txt_path = "C:/Users/Lucimara Santos/Documents/LABIC/face-detection-crop/first-filter/raw-crop.txt"
+bbox_folder = "C:/Users/*****/face-detection-crop/first-filter/bboxes"
+multi_crop_folder = "C:/Users/*****/face-detection-crop/first-filter/multi-crop-raw"
+not_face_folder = "C:/*****/face-detection-crop/first-filter/not"
+txt_path = "C:/*****/face-detection-crop/first-filter/raw-crop.txt"
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
