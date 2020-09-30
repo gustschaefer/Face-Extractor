@@ -9,8 +9,8 @@ Quando o processo for finalizado, a rede é utilizada novamente (2° filtragem) 
 - [Primeira filtragem (raw)](#primeira-filtragem-(raw))
 - [Segunda filtragem](#segunda-filtragem)
 - [Como executar o programa](#como-executar-o-programa)
-	- [1° filtragem: Detecção das faces e recorte](#1°-filtragem:-detecção-das-faces-e-recorte)
-	- [2° filtragem: Classificação das imagens recortadas](#2°-filtragem:-classificação-das-imagens-recortadas)
+	- [1° filtragem: Detecção das faces e recorte](#detecção-das-faces-e-recorte)
+	- [2° filtragem: Classificação das imagens recortadas](#classificação-das-imagens-recortadas)
 	- [Resultados](#resultados)
 - [Referencias](#referencias)
 
@@ -90,7 +90,7 @@ Os arquivos .txt possuem informaçoes sobre os recortes dos rostos e dos sem ros
 
 Como dito acima, o programa possui duas etapas: 1° e 2° filtragem.
 
-### 1° filtragem: Detecção das faces e recorte
+### Detecção das faces e recorte
 
 Primeiro você deve abrir um terminal (Windows, Linux ou Mac) e rodar o script **detect_faces.py** junto com os argumentos necessários:
 
@@ -124,7 +124,7 @@ OBS.: No exemplo abaixo, utilizei os caminhos de pasta pré definidos.
 
 Aguarde o processo ser finalizado e veja que as imagens e o arquivo .txt foram salvos nas pastas pré definidas (ou em outra que escolheu).
 
-### 2° filtragem: Classificação das imagens recortadas
+### Classificação das imagens recortadas
 
 Abra um segundo terminal (ou se preferir, utilize o primeiro) e execute o script **crop_filter.py** junto com os argumentos necessários:
 
