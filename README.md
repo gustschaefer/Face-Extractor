@@ -1,6 +1,6 @@
 # Face Extractor
 
-O programa tem como objetivo receber um dataset de pessoas e extrair apenas as potenciais faces contidas em cada imagem. Para realizar a detecção, uma rede Caffe ***res10_300x300_ssd_iter_140000.caffemodel*** pré treinada é utilizada, junto com seu modelo ***deploy.prototxt*** (Para maiores informaçoes sobre a rede pré treinada, veja a sessão [Referencias](#Referencias). Após fazer a detecção dos rostos em cada imagem (1° filtragem), o programa os recorta e envia para uma pasta determinada pelo usuário.
+O programa tem como objetivo receber um dataset com imagens de pessoas e extrair apenas as potenciais faces contidas em cada imagem. Para realizar a detecção, uma rede Caffe ***res10_300x300_ssd_iter_140000.caffemodel*** pré treinada é utilizada, junto com seu modelo ***deploy.prototxt*** (Para maiores informaçoes sobre a rede pré treinada, veja a sessão [Referencias](#Referencias). Após fazer a detecção dos rostos em cada imagem (1° filtragem), o programa os recorta e envia para uma pasta determinada pelo usuário.
 
 Quando o processo for finalizado, a rede é utilizada novamente (2° filtragem) para verificar se os recortes realmente são faces, e eliminar os falsos positivos. Além disso, ao final de cada etapa, um arquivo .txt é gerado contendo informaçoes sobre as imagens como seu nome, tamanho e probabilidade de ser um rosto.
 
@@ -172,6 +172,6 @@ Dai que se torna útil o uso dos arquivos txt, pois da pra conferir o confidence
 
 ## Referencias
 
-Para fazer a **detecção de faces**, utilizei como referencia o post do blog [PyImageSearch](https://www.pyimagesearch.com/), que explica como utilizar a rede neural Caffe em um post detalhado com maior aprofundamento apenas na **detecção** dos rostos. Além disso, utilizei partes do código mostrado para me auxiliar nos processos aqui descritos. Para acessar, acesse: 
+Para fazer a **detecção de faces**, utilizei como referencia o post do blog [PyImageSearch](https://www.pyimagesearch.com/), que explica detalhadamente como utilizar a rede neural Caffe, com maior aprofundamento apenas na **detecção** dos rostos. Além disso, utilizei partes do código mostrado para me auxiliar nos processos aqui descritos. Acesse: 
 
 * https://www.pyimagesearch.com/2018/02/26/face-detection-with-opencv-and-deep-learning/
